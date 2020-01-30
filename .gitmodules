@@ -1,0 +1,3 @@
+[submodule "ECE-315-labs"]
+	path = ECE-315-labs
+	url = git@github.com:arostron/ECE-315-labs.git
