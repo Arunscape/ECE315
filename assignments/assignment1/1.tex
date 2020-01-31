@@ -9,13 +9,22 @@
 \begin{itemize}
   \item Violations of real-time constraints are undesireable, but tolerated in
     soft real-time systems while in hard real-time systems, violations of
-    real-time constraints are unacceptable
+    real-time constraints are unacceptable (a violation for a hard real-time
+    system would cause catastrophic failure, or even death.)
 \end{itemize}
 
 
 \subsubsection*{}
 When selecting an implementation strategy, it is useful to distinguish between
 hard and soft real-time systems because you want to select a strategy that is
-appropriate. For example, you probably would not want a soft real-time embedded
-system for an application that lives depend on, like a pacemaker or traffic
-lights for example. 
+appropriate. You want to consider what might happen in the case of failure to 
+meet real-time constraints. If a violation of these constraints would cause
+catastrophic damage, such as loss of life, you have a hard real-time system,
+so your implementation strategy should take that into account. If you have a
+soft real time system, and failure to meet the real-time constraints is not
+catastrophic, your implementation strategy does not need to avoid
+failure to the same extent as it would need to for a hard real-time system.
+
+For example, you probably would have a different implementation strategy for
+making a pacemaker versus a vending machine. In one scenario, a person's life is
+dependent, while in the other, a person may or may not get a snack.
