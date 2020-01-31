@@ -1,7 +1,15 @@
 \subsection{Cloud Computing}
-Definition: Cloud Computing is the ability to have access to computing resources
-as a service. For example, servers, storage, databases, networking, analytics,
-etc. 
+
+As per ISO/IEC 17788:2014 :
+\begin{displayquote}
+  ``
+Cloud computing is a paradigm for enabling network access to a scalable and elastic pool of shareable physical or
+virtual resources with self-service provisioning and administration on-demand. The cloud computing paradigm is
+composed of key characteristics, cloud computing roles and activities, cloud capabilities types and cloud service
+categories, cloud deployment models and cloud computing cross cutting aspects
+that are briefly described in [clause 6 of ISO/IEC 17788:2014].
+''
+\end{displayquote}
 Advantages:
 \begin{itemize}
   \item The cloud computing provider takes care of purchasing and maintaining
@@ -11,18 +19,36 @@ hardware, not the user
   the user can request more computing resources when their service has more
   traffic, but when there is less traffic, the user can scale down their
   operations to save cost
-\item Reduces barrier of entry for deploying an application. Without 
-
+\item Reduces barrier of entry for deploying an application. One can deploy a
+  toy project they've been working on for a few dollars, without investing in
+  the up-front cost of purchasing a mainframe, maintaining it, and selling the
+  computer when they're done.
 \end{itemize}
 
-\subsection{Edge Computing}
-Definition: 
+Overall, I think this term is extremely well-defined, considering there is an
+ISO specification that is 10 pages long, and is very thorough in defining
+everything. It is, after all the international body for defining standards\dots
 
+\subsection{Edge Computing}
+According to Cloudflare: 
+\begin{displayquote}
+  ``
+  Edge computing is a networking philosophy focused on bringing computing as close to the source of data as possible in order to reduce latency and bandwidth use. In simpler terms, edge computing means running fewer processes in the cloud and moving those processes to local places, such as on a user’s computer, an IoT device, or an edge server. Bringing computation to the network’s edge minimizes the amount of long-distance communication that has to happen between a client and server.
+  ''
+\end{displayquote}
 
 Advantages:
 \begin{itemize}
-  \item .
+  \item Lower latency (better user experience, streaming and gaming applications
+    for example. Users would experience higher quality streams and faster
+    response times for games)
+  \item Less bandwidth and server resource usage, and therefore lower costs
+    associated with these resources
 \end{itemize}
+
+Overall, it is not very well defined. However, most sources seem to agree that
+the general idea is moving cloud computing resources geographically closer to
+users.
 
 \subsection{Fog Computing}
 Definition: 
