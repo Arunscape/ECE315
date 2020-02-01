@@ -69,17 +69,37 @@ Advantages:
     efficiently compared to edge computing. It
     brings the edge closer to the user, kind of like how fog is closer to the
     ground than clouds
-  \item allows for data to be processed locally for faster proccessing and
-    response times. Applications include a ``hive mind'' of self driving
-    vehicles, or sensors in a factory which need to automatically shut down
+  \item allows for data to be sent to a local node for faster proccessing and
+    response times. An example application would be sensors in a factory which need to automatically shut down
     equipment if something goes wrong
 \end{itemize}
 
+Overall, this term is fairly well-defined. There are multiple papers, IEEE
+articles and the like which give in-depth definitions of fog computing which
+seem to agree with each other. 
+
 \subsection{Mist Computing}
-Definition: 
+According to the National Institute of Standards and Technology,
+\begin{displayquote}
+  ``Mist computing is a lightweight and rudimentary form of fog computing that resides directly within
+the network fabric at the edge of the network fabric, bringing the fog computing layer closer to
+the smart end-devices. Mist computing uses microcomputers and microcontrollers to feed into fog
+computing nodes and potentially onward towards the centralized (cloud) computing
+services.''
+\end{displayquote}
 
 Advantages:
 \begin{itemize}
-  \item .
+  \item similar to how fog computing takes edge computing a step further, mist
+    computing takes it a step further to reduce latency, and better use
+    resources like processing power
+  \item no need to connect to the `cloud' to perform decisions, but overall
+    telemetry data can still be aggregated by connecting to the broader internet
+    Allows for applications like self-driving cars to make decisions locally
+    where decisions have to be made quickly. 
 \end{itemize}
 
+Overall, this term is not well-defined. Finding a definition was difficult to
+begin with. Additionally, the sources that mention mist computing seem to talk
+more about fog computing than mist computing. However, generally, they agree on
+the local processing aspect of mist computing.
