@@ -16,7 +16,9 @@ allocation altogether, and pre-allocate all the memory you need for the duration
 of the program. This is known as static allocation. This is what NASA does.
 
 Smart pointers can be used in place of raw pointers to help with avoiding
-initialization errors
+initialization errors. When the object no longer needs to be used, the
+destructor is called, which is supposed to clean up the object, thereby avoiding
+a memory leak. 
 
 The RAII, or Resource Aquisision is Initialization technique can also be used to
 help with avoiding memory leaks and uninitialized pointers.

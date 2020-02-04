@@ -1,0 +1,16 @@
+Buffer overflow happens then elements are added to a buffer (implemented as an
+array) and they go beyond the buffer's capacity. This can be dangerous, since it
+allows for arbitrary data to potentially overwrite other data which might be in
+use, or code. This can be a security issue which allows an attacker to change
+data that they should not have access to, or to modify code that will be run.
+This can also result in system instability and crashes, since unexpectedly
+changing data results in undefined behaviour. 
+
+Embedded systems are generally more vulnerable to buffer overflow, since they
+usually do not offer the same protections as a fully fledged operating system.
+
+In C, these problems can be avoided by using \texttt{strncpy()} as opposed to
+\texttt{strcpy()}, and \texttt{fgets()} instead of \texttt{gets()}. Bounds
+checking can also help with preventing buffer overflows. If the programmer makes
+sure that they never attempt to go out of the bounds of the buffer, overflow
+won't happen. 
