@@ -3,3 +3,20 @@ required. Even though the program no longer needs the object, it holds on to the
 precious space in memory and does not allow for that space to be recycled to
 allow new objects to take up that space. Left unchecked, the system will run out
 of memory, degrade performance, and eventually cause system failure.
+
+Memory leaks and initialization errors can be avoided using static analysis
+tools in your code editor. 
+
+Tools like dmalloc and mpatrol can be used as drop-in
+replacements for \texttt{malloc()} and they can help keep track of allocations
+to help the programmer fix memory leaks. 
+
+Another strategy for embedded systems to avoid memory leaks is to avoid dynamic
+allocation altogether, and pre-allocate all the memory you need for the duration
+of the program. This is known as static allocation. This is what NASA does.
+
+Smart pointers can be used in place of raw pointers to help with avoiding
+initialization errors
+
+The RAII, or Resource Aquisision is Initialization technique can also be used to
+help with avoiding memory leaks and uninitialized pointers.

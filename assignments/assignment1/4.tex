@@ -7,10 +7,12 @@ A pointer can be created in the following ways:
   \item The \texttt{\&} operator is used to obtain a pointer to an existing
     piece of data
   \item math is done on an existing pointer, and the result is stored as a new
-    pointer. (e.g. \texttt{char* new\_ptr = other\_ptr + 8})
+    pointer. (e.g. \texttt{char* new\_ptr = other\_ptr + 8;})
   \item A pointer can be declared but uninitialized. A so-called wild pointer
     can point to anywhere in memory and therefore should not be used. A pointer
     should be initialized with a value before use.
+  \item A pointer can be declared and initialized to a specific address (e.g.
+    \texttt{void* ptr = 0x93784928;})
 \end{enumerate}
 
 Throughout a pointer's life, it can be modified and overwritten. An example of a
@@ -19,13 +21,14 @@ before or after they are used. (e.g. \texttt{*(ptr++)}.  Void pointers, which
 can be used to point to anything can be casted to a different type before being
 modified (e.g. \texttt{ptr = (char* ptr)}) as well. Also, a pointer can be
 overwritten by simply assigning another pointer value to the existing pointer.
+Pointers are also usually dereferenced in their lifetime using the * operator.
+This allows for the data that the pointer points to, to be accessed. 
 
-When the value a pointer to no longer needs to be used, a responsible C
-programmer will call \texttt{free()} to recycle the memory.
-Once the block of memory that a pointer points to is freed using the
-\texttt{free()} function, the pointer can be safely discarded. Actually, the
-pointer should no longer be used, because the pointer now points to a region of
-memory that has been recycled. This is called a dangling pointer. Failure to
-call \texttt{free()} after the object is no longer required results in what is
-known as a memory leak.
+When the object a pointer points to no longer needs to be used, a responsible C
+programmer will call \texttt{free()} to recycle the memory.  Once the block of
+memory that a pointer points to is freed using the \texttt{free()} function, the
+pointer can be safely discarded. Actually, the pointer should no longer be used,
+because the pointer now points to a region of memory that has been recycled.
+This is called a dangling pointer. Failure to call \texttt{free()} after the
+object is no longer required results in what is known as a memory leak.
 
