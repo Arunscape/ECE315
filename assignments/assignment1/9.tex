@@ -1,0 +1,43 @@
+\subsection{Major elements of this architecture}
+\begin{enumerate}
+  \item it's single threaded
+  \item foreground-background systems:\\
+    Background processing: The main loop can meet less challenging timing
+constraints through normal instruction execution.\\
+Foreground processing: Interrupt service routines provide faster response for
+critical events (assuming interrupt hardware is present)
+  \item sleep mode with interrupts: This allows the microcomputer to go in a
+    low-power sleep state that can be woken up with external interrupt signals that exceed a specified interrupt priority level.
+  \item one non-preemptive loop with no interrupts:
+    A number of input sources or devices are polled, it iterates at a frequency
+    that is at least the fastest required polling frequency. The longest
+    possible execution time in the loop must be less than the loop period,
+    and the frequency is determined by a hardware timer. 
+    A waiting sub-loop at the end of the main loop safely uses
+    up excess time at the end of each iteration of the main loop.
+  \item one non-preemptive loop with interrupts:
+    We enhance a single nonpreemptive loop with a few interrupts to ensure that
+    hardware-triggered events are serviced promptly and deterministically.  It
+    can enable data processing by signalling a flag or semaphore that allows
+    software outside of the ISR (which should be short) to proceed later after a
+    small delay, and it also keeps the processor lightly loaded so that the
+    worst-case execution of ISRs does not compromise the real-time performance
+    of the main processing loop.
+  \item multiple non-preemptive loops with interrupts:
+   Two or more nonpreemptive loops which should be implemented using one
+   software thread are used that iterate at different harmonic periods.
+   Interrupts are used to provide fast and deterministic response to external
+   events.  Executions of the multiple loops are enforced using a single
+   hardware timer to ensure timing accuracy.  Most data processing is done
+   outside the ISRs in the one main software thread, so the ISR should be kept
+   short.  This keeps the processor lightly loaded so that even the worst-case
+   execution of ISRs does not compromise the real-time performance of the
+   multiple processing loops.  Also, each polled input or device is assigned to
+   the one loop that iterates just fast enough to meet its real-time constraints
+  \end{enumerate}
+`
+\subsection{How it simplifies meeting these real-time specifications}
+\begin{enumerate}[label={\alph*)}]
+  \item .
+  \item 
+\end{enumerate}
