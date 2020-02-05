@@ -1,11 +1,20 @@
 \subsection{Major elements of this architecture}
+The super short version:
 \begin{enumerate}
   \item it's single threaded
+  \item it's non-preemptive
+  \item there is a main loop, where most of the processing is done
+  \item Interrupt Service Routines (ISR) respond to critical events
+\end{enumerate}
+
+\noindent
+A little more in-depth:
+\begin{enumerate}
   \item foreground-background systems:\\
     Background processing: The main loop can meet less challenging timing
-constraints through normal instruction execution.\\
-Foreground processing: Interrupt service routines provide faster response for
-critical events (assuming interrupt hardware is present)
+    constraints through normal instruction execution.\\ 
+    Foreground processing: ISRs provide faster
+    response for critical events (assuming interrupt hardware is present)
   \item sleep mode with interrupts: This allows the microcomputer to go in a
     low-power sleep state that can be woken up with external interrupt signals that exceed a specified interrupt priority level.
   \item one non-preemptive loop with no interrupts:
@@ -16,7 +25,7 @@ critical events (assuming interrupt hardware is present)
     A waiting sub-loop at the end of the main loop safely uses
     up excess time at the end of each iteration of the main loop.
   \item one non-preemptive loop with interrupts:
-    We enhance a single nonpreemptive loop with a few interrupts to ensure that
+    We enhance a single non-preemptive loop with a few interrupts to ensure that
     hardware-triggered events are serviced promptly and deterministically.  It
     can enable data processing by signalling a flag or semaphore that allows
     software outside of the ISR (which should be short) to proceed later after a
@@ -24,7 +33,7 @@ critical events (assuming interrupt hardware is present)
     worst-case execution of ISRs does not compromise the real-time performance
     of the main processing loop.
   \item multiple non-preemptive loops with interrupts:
-   Two or more nonpreemptive loops which should be implemented using one
+   Two or more non-preemptive loops which should be implemented using one
    software thread are used that iterate at different harmonic periods.
    Interrupts are used to provide fast and deterministic response to external
    events.  Executions of the multiple loops are enforced using a single
@@ -35,9 +44,46 @@ critical events (assuming interrupt hardware is present)
    multiple processing loops.  Also, each polled input or device is assigned to
    the one loop that iterates just fast enough to meet its real-time constraints
   \end{enumerate}
-`
-\subsection{How it simplifies meeting these real-time specifications}
+
+  \subsection{How it simplifies meeting these real-time specifications}
 \begin{enumerate}[label={\alph*)}]
-  \item .
-  \item 
+  \item maximum response times:
+    Using one non-preemptive loop gives us a guaranteed maximum response time. 
+    Using one non-preemptive loop with interrupts, we get predictable maximum
+    response time for both polled devices and external events.
+    Having a predictable maximum response time makes it easy to determine if
+    we will meet the maximum response time criteria
+
+  \item maximum variability in the response times: 
+    A long main loop might actually result in overly variable response times to
+    input events, but in general, this should be lower in a non-preemptive loop
+    architecture compared to a preemptive one since exceptions and internal
+    signals would contribute to the variability, but for a preemptive
+    architectures,  exceptions, internal signals, and preemptive tasks
+    contribute to the variability in response times. 
+
+  \item accuracy of repetition frequencies:\label{c}
+    A non-preemptive system is likely to have a much more predictive repetition
+    frequency compared to a preemptive one, since in the non-preemptive system,
+    this repetition frequency is based on the loop, while in a preemptive
+    system there is overhead with running the OS among other factors which
+    result in less predictable repetition frequencies compared to a
+    non-preemptive system.
+
+  \item maximum variability in the repetition frequencies:
+    For the same reason as \ref{c} above, the maximum variability in the
+    repetition frequencies will overall be less variable and more consistent in
+    a non-preemptive system compared to a preemptive system due to the looping
+    architecture in the non-preemptive system being much more predictable than
+    running an operating system that has extra overhead.
+
+  \item control of degredation behaviour:
+    In preemptive systems, the control of degredation behaviour is actually
+    implicitly handled through prioritization, but for non-preemptive systems
+    this behaviour has to be explicitly implemented. Luckily, ISRs can be used
+    to provide a faster response for critical events such as if the battery is
+    nearly exhausted. ISRs are supposed to not compromise the real-time
+    performance of the system, and the small overhead they add does not compare
+    the the overhead of a fully-fledged operating system that uses preemptive
+    scheduling.
 \end{enumerate}

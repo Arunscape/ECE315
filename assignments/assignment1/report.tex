@@ -44,6 +44,8 @@
 
 \usepackage{pdflscape}
 \usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{lastpage}
 
 \renewcommand*\contentsname{Table of Contents}
 
@@ -55,7 +57,7 @@
 \fancyhf{}
 \rhead{\me}
 %\lhead{Guides and tutorials}
-%\rfoot{Page \thepage}
+\cfoot{Page {\thepage} of {\pageref{LastPage}}}
 
 \title{ECE 315 Assignment 1}
 \author{\me}
