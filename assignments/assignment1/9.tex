@@ -77,13 +77,13 @@ A little more in-depth:
     architecture in the non-preemptive system being much more predictable than
     running an operating system that has extra overhead.
 
-  \item control of degredation behaviour:
-    In preemptive systems, the control of degredation behaviour is actually
+  \item control of degradation behaviour:
+    In preemptive systems, the control of degradation behaviour is actually
     implicitly handled through prioritization, but for non-preemptive systems
     this behaviour has to be explicitly implemented. Luckily, ISRs can be used
     to provide a faster response for critical events such as if the battery is
     nearly exhausted. ISRs are supposed to not compromise the real-time
     performance of the system, and the small overhead they add does not compare
-    the the overhead of a fully-fledged operating system that uses preemptive
+    the overhead of a fully-fledged operating system that uses preemptive
     scheduling.
 \end{enumerate}

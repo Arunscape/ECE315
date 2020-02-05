@@ -1,5 +1,5 @@
 The system would fall behind on its real-time guarantees if the amount of idle
-time was reduced below a safe percentage of the CPU' execution time. 
+time was reduced below a safe percentage of the CPU's execution time. 
 
 For externally initiated events, too little idle time would mean not enough
 excess CPU capacity so that the worst-case bursts of event-handling workloads
@@ -8,7 +8,7 @@ specifications.
 
 For internally initiated events, not enough idle time would mean that the
 effects of internal sources of timing variability (e.g., variability in the
-execution time of compiled software, cache memory and virtual memory,and DMA
+execution time of compiled software, cache memory and virtual memory, and DMA
 activity) would not be absorbed and therefore not hidden. 
 %The timing for internally initiated events should be determined by H/W timers.
 
