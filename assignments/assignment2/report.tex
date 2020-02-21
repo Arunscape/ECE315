@@ -1,0 +1,95 @@
+%preamble
+\documentclass[letterpaper]{article}
+\synctex=1
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{lipsum}
+\usepackage{float}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\usepackage{siunitx}
+\usepackage{adjustbox}
+\usepackage{multirow}
+% for merging table cells I think
+
+\usepackage{tabularx}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+
+% allows for linewrap within cells
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\usepackage{todonotes}
+\usepackage{hyperref}
+
+\usepackage{pdfpages} % for attaching the table lol
+
+\usepackage[section]{placeins} % forces figures to appear in the same section
+
+\usepackage[T1]{fontenc}
+
+%for plots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{width=8cm,compat=1.15}\usepgfplotslibrary{patchplots}
+
+\usepackage{minted} %code highlighting make sure you have pygmentize installed
+\usepackage{xcolor}
+
+\usepackage{csvsimple}
+
+\usepackage[pdf]{graphviz}
+
+\usepackage{pdflscape}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{lastpage}
+
+\renewcommand*\contentsname{Table of Contents}
+
+\def\me{Arun Woosaree\\ XXXXXXX}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\me}
+%\lhead{Guides and tutorials}
+\cfoot{Page {\thepage} of {\pageref{LastPage}}}
+
+\title{ECE 315 Assignment 1}
+\author{\me}
+
+\begin{document}
+\maketitle
+
+\section{}
+\input{1.tex}
+
+\section{}
+\input{2.tex}
+
+\section{}
+\input{3.tex}
+
+\section{}
+\input{4.tex}
+
+\section{}
+\input{5.tex}
+
+\section{}
+\input{6.tex}
+
+\section{}
+\input{7.tex}
+
+\section{}
+\input{8.tex}
+
+\section{}
+\input{9.tex}
+
+\end{document}

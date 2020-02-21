@@ -1,0 +1,46 @@
+\subsection*{}
+The system will enter any of the low power modes below when a \texttt{STOP}
+instruction is executed. Depending on the \texttt{WCR[LPMD]} bits, the MCU will
+enter either wait, doze, or stop mode.
+For each of these modes, power is saved by idling the CPU with no active
+cycles, powering down the system, and stopping all internal clocks. The coldfire
+core is also disabled in each of the low-power modes. 
+
+A wake-up event will cause the MCU to exit any of these low power modes, and
+return to run mode. A wake-up event can be any type or reset, or any valid,
+enabled interrupt request. To exit from these low power modes with an interrupt,
+the interrupt request's priority should be higher than the value programmed in
+\texttt{WCR[LPMD]}, and higher than the value programmed in the interrupt
+priority mask (I) field of the core’s status register. Additionally, the
+interrupt request should be from a source that is not masked in the interrupt
+controller’s interrupt mask register, and it should have been enabled at the
+module of the interrupt’s origin.
+
+\subsubsection{wait} 
+Wait mode saves power by stopping the CPU and memory clocks until a wake-up
+event is detected. Peripherals can be programmed to continue operating, and can
+also generate interrupts which will cause the CPU to exit from wait mode. The
+wait mode is entered when the \texttt{STOP} instruction is executed, with the
+\texttt{WCR[LPMD]} bits having a value of \texttt{10}.
+
+%A wake-up event will cause the MCF54415 to exit wait mode.
+\subsubsection{doze} 
+Doze mode is similar to wait mode, in that it affects the
+processor in the same way as in wait mode, however, some peripherals define
+individual operational characteristics in doze mode. Peripherals continuing to
+run and having the capability of producing interrupts may cause the CPU to exit
+the doze mode and return to run mode. Stopped peripherals restart operation on
+exit from doze mode, as defined for each peripheral
+The doze mode is entered when the \texttt{STOP} instruction is executed with the
+\texttt{WCR[LPMD]} bits having a value of \texttt{01}.
+
+\subsubsection{stop}
+Stop mode is also similar to wait and doze mode, in that it affects the
+processor the same way. However, all system clocks are stopped, and peripherals
+cease operation.
+The stop mode is entered when the \texttt{STOP} instruction is executed with the
+\texttt{WCR[LPMD]} bits having a value of \texttt{11}.
+
+%The SRAM, Power Management, Chip Configuration Module, System Control Module,
+%GPIO, Edge Port, eDMA Controller, FlexBus Module, DDR Controller, USB OTG, USB
+%Host, SSI, Programmable Interrupt Timers, DMA Timers, 
