@@ -16,7 +16,7 @@ interrupt request should be from a source that is not masked in the interrupt
 controller’s interrupt mask register, and it should have been enabled at the
 module of the interrupt’s origin.
 
-\subsubsection{wait} 
+\subsubsection*{wait} 
 Wait mode saves power by stopping the CPU and memory clocks until a wake-up
 event is detected. Peripherals can be programmed to continue operating, and can
 also generate interrupts which will cause the CPU to exit from wait mode. The
@@ -24,7 +24,7 @@ wait mode is entered when the \texttt{STOP} instruction is executed, with the
 \texttt{WCR[LPMD]} bits having a value of \texttt{10}.
 
 %A wake-up event will cause the MCF54415 to exit wait mode.
-\subsubsection{doze} 
+\subsubsection*{doze} 
 Doze mode is similar to wait mode, in that it affects the
 processor in the same way as in wait mode, however, some peripherals define
 individual operational characteristics in doze mode. Peripherals continuing to
@@ -34,7 +34,7 @@ exit from doze mode, as defined for each peripheral
 The doze mode is entered when the \texttt{STOP} instruction is executed with the
 \texttt{WCR[LPMD]} bits having a value of \texttt{01}.
 
-\subsubsection{stop}
+\subsubsection*{stop}
 Stop mode is also similar to wait and doze mode, in that it affects the
 processor the same way. However, all system clocks are stopped, and peripherals
 cease operation.
