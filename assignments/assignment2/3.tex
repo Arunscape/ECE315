@@ -1,6 +1,20 @@
 \subsection*{Advantages}
+\begin{itemize}
+  \item when responsiveness is desired and fast response times are needed
+  \item allows the programmer to concentrate on the requirements of a
+    specific task without worrying about the effect it has on the system and
+    other tasks
+  \item better modularity, making it easier to maintain and extend the code
+\end{itemize}
 
 \subsection*{When would it be more appropriate to choose a single threaded
-architecture}
+  bare-metal architecture}
 
-When there are only a few, not complicated tasks. 
+\begin{itemize}
+  \item when simplicity is desired in the source code and deemed more important
+    than responsiveness. For example, when prototyping
+  \item when there are only a few, not complicated tasks
+  \item if the overhead of multitasking is too high. For example, multitasking
+    environments require more memory
+  \item if efficient operation with the simplest hardware possible is desired
+\end{itemize}
