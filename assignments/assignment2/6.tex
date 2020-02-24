@@ -7,11 +7,9 @@
 
 %The bit period is \[\frac{1}{115200}\]
 
-Calculating the error budget, \footnotemark
+Calculating the error budget,
 \[75\% \div 2 = 37.5\%\]
 \[35\% \times 32 = 12\]
-\footnotetext{Calculation is based off of this tutorial:
-\url{http://www.eecs.umich.edu/courses/eecs373.w05/lecture/AN2141.pdf}}
 
 So, \(\pm 12\) periods is the error budget, except for that the
 clock and the received data stream are asynchronous and the falling edge of the
@@ -26,3 +24,5 @@ receive clocks after the original falling edge of the start bit.
 
 So, the allowable error is
 \[\frac{11}{304} \times 1000000 = 36184.21053~ppm\]
+\todo{Calculation is based off of this tutorial:
+\url{http://www.eecs.umich.edu/courses/eecs373.w05/lecture/AN2141.pdf}}
