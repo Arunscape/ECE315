@@ -1,0 +1,40 @@
+\section{}
+\begin{comment}
+  Multiple Nonpreemptive Loops with Interrupts (cont’d)
+• Advantages:
+– Guaranteed minimum polling frequency for each
+input or device
+– Guaranteed maximum response time for polled
+inputs and devices
+– External events are handled promptly and
+deterministically using hardware-triggered interrupts.
+• Disadvantages:
+– Some devices may be polled faster than necessary,
+which is wasteful of the processor’s time.
+– The one software thread has less cohesion because
+it now handles more than one loop. A state variable
+keeps track of the timer ISR calls and the active loop.
+
+\end{comment}
+
+
+\subsection*{Similarities}
+\begin{enumerate}
+  \item both use harmonic intervals to move between different sections of code
+  \item each polled input or device is assigned to one loop or state
+  \item loops/states not giving up CPU until the code is done processing
+\end{enumerate}
+
+\subsection*{Differences}
+\begin{enumerate}
+  \item separate blocks of code represented as a different loop vs. a different
+    states
+  \item interupts for responding to external events, (Multiple nonpreemptive
+    loops) provide fast and deterministic response to external events vs. giving
+    up CPU to the kernel when the task is complete, meaning external events are
+    only processed when the state associated with that peripheral is run
+    (periodically state-driven)
+  \item advancing from state to state happens at predictable intervals, but with
+    multiple nonpreemptive loops with interrupts, an interrupt can vary the time
+    it takes to switch between tasks
+\end{enumerate}

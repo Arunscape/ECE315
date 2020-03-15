@@ -1,0 +1,14 @@
+\section{}
+A simple implementation of co-operative multitasking can be done using state
+machines. Each task would be called in the main loop, similar to how tasks are
+called in one nonpreemptive loop. However, each task would also modify a global
+variable which stores the current state of the state machine. 
+For example, each task could have global integer variable, which holds its
+current state. Then, in each task, it would check what state it is currently in,
+and run some code, update its corresponding state variable, and return, to yield
+CPU to the next task.
+
+
+Idle time can be implemented by creating an idle task that executes \texttt{NOP}
+in an infinite loop until a hardware timer signals the start of the next looping
+interval. 
