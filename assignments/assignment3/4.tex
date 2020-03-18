@@ -1,14 +1,15 @@
 \section{}
-A simple implementation of co-operative multitasking can be done using state
-machines. Each task would be called in the main loop, similar to how tasks are
-called in one nonpreemptive loop. However, each task would also modify a global
-variable which stores the current state of the state machine. 
-For example, each task could have global integer variable, which holds its
-current state. Then, in each task, it would check what state it is currently in,
-and run some code, update its corresponding state variable, and return, to yield
-CPU to the next task.
-
-
-Idle time can be implemented by creating an idle task that executes \texttt{NOP}
-in an infinite loop until a hardware timer signals the start of the next looping
-interval. 
+The number of teeth a gear has determines how many steps there are in a full
+rotation. For example, a gear with four teeth will have 4 steps in a
+360\textdegree rotation. Therefore, the step angle for the one gear would be
+360\textdegree/4 = 25\textdegree. The formula is 360\textdegree divided by the
+number of teeth. Now, in the stepper motor, there is a rotor and stator, and the
+rotor has more teeth than the stator. Because the rotor has more teeth than the
+stator, we can see both visually and mathematically that the individual step
+angle for the gear would be smaller than the stator. Because these gears rotate
+in opposite directions, the overall rotation would be the larger step angle of
+the stator, subtracted by the smaller step angle of the rotor. We subtract the
+step angle of the rotor, because it goes in the opposite direction of the
+stator. So, overall, we get \[\frac{360^\circ}{n_s} - \frac{360^\circ}{n_r}\]
+where \(n_s\) is the number of teeth of the stator, and \(n_r\) is the number of
+teeth of the rotor. This matches with the formula described in slide 10-10.
