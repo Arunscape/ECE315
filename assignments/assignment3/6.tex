@@ -1,29 +1,7 @@
 \section{}
-\begin{comment}
-\begin{align*}
-  \frac{\SI{1500}{bytes} \times \SI{8}{bits/byte}}{\SI{115200}{bits/\second}}&=
-  \frac{5}{48}\SI{}{\second}
-\end{align*}
-\end{comment}
-
-%The bit period is \[\frac{1}{115200}\]
-
-Calculating the error budget,
-\[75\% \div 2 = 37.5\%\]
-\[35\% \times 32 = 12\]
-
-So, \(\pm 12\) periods is the error budget, except for that the
-clock and the received data stream are asynchronous and the falling edge of the
-start bit could occur just after a 32x clock rising edge, or just before one but
-without enough setup time to use it. So, the error budget is actually \(\pm
-11\) periods.
-
-The optimum sampling point for the stop bit is its bit-centre,
-which is
-\[32 \times (1~start~bit + 8~data~bits + 0.5~stop~bit) = 304 \]
-receive clocks after the original falling edge of the start bit.
-
-So, the allowable error is
-\[\frac{11}{304} \times 1000000 = 36184.21053~ppm\]
-\todo[inline, color=blue!10]{Calculation is based off of this tutorial:
-\url{http://www.eecs.umich.edu/courses/eecs373.w05/lecture/AN2141.pdf}}
+IP provides only an unreliable and connectionless service using its own node
+addressing scheme even if at least some of the underlying networks might already
+provide reliable communication or a large number of unique addresses for every
+node because the priority is compatibility between the existing networks. Not
+all networks connected to the internet are reliable. Not all of them have a very
+large number of unique addresses for every node. 
