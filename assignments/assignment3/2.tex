@@ -1,1 +1,17 @@
 \section{}
+
+The FEC 
+
+
+The DMA 
+
+If the system designer is expecting more bits to be sent than recieved, they may
+choose to partition the FIFO buffer such that more space is allocated for
+sending bits than receiving. Similarly, if more bits are expected to be received
+than sent, then the FIFO buffer may be allocated such that the buffer for
+receiving is larger. 
+
+This decision would be implemented by loading the value
+
+
+into an FEC register.
