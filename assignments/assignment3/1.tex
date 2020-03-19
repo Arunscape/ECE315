@@ -1,1 +1,20 @@
 \section{}
+
+\begin{enumerate}
+  \item MAC determines which device can access the medium at one moment
+  \item provides an abstraction for the physical layer to the other higher
+    higher-level layers in the OSI model. 
+  \item collision detection, resolution, and avoidance (like CSMA/CD and CSMA/CA
+    for example). Also handles retransmission
+  \item offers some protection against transmission errors, usually through
+    frame check sequences
+  \item resolves addressing of destination stations
+  \item controls access to the PHY
+\end{enumerate}
+
+Compared to the PHY, the MAC layer operates at one layer above the PHY in the
+OSI model. Additionally, the physical layer does not handle error detection and
+correction. It does not determine which device can access the medium either. The
+physical layer transmits raw bits, instead of data frames. It is an interface to
+the transmission medium, while the MAC layer is an interface to the physical
+layer.
