@@ -1,13 +1,16 @@
 \section{}
 \subsection*{Advantages}
 \begin{itemize}
-  \item All ethernet frames will fit in the buffer
+  \item A receive interrupt will always happen when a packet is received,
+    meaning no ethernet packets would be ignored by the system
+  \item If the EMRBR value was smaller, ethernet frames that are longer than
+    expected will be dropped. With a larger EMRBR value, this is not a problem.
 \end{itemize}
 
-\subsection*{When would it be more appropriate to choose a single threaded
-  bare-metal architecture}
-
+\subsection*{Disadvantages}
 \begin{itemize}
-  \item THe FEC would accept frames that are larger than the ethernet standard
-    and are potentially garbage
+  \item The FEC would accept frames that are larger than the ethernet standard,
+    if the value in the EMRBR register is too big which could result in garbage
+    data being read
+  \item 
 \end{itemize}
