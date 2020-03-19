@@ -1,11 +1,3 @@
 \section{}
-There are two different systems of priorities because tasks and hardware
-interrupts are meant to behave very differently from each other. Hardware
-interrupts usually are meant to interrupt tasks that are currently running, so
-that the system can react in real-time to external events, while tasks generally
-have lower priority. For example, waking up the system from a low-power state
-happens with a hardware interrupt, and stops the idle task from running. This is
-an example of the two different systems interacting. These
-two systems can also interact with each other when a task requires a hardware
-interrupt to continue execution. For example, waiting on a hardware timer, or an
-I/O request.
+
+slew = speed\_limit / something

@@ -1,1 +1,14 @@
 \section{}
+
+Smaller packets have higher overhead. This should be considered when selecting
+the maximum packet size. If the connection is unreliable, and packets tend to
+get lost, then smaller packets are better. If the connection is more stable,
+then a larger maximum packet size may be more desireable due to less
+retransmissions, and less overhead. 
+
+These values are comunicated during the handshake process. The sender will
+advertise the maximum amount of data that can be sent before it must wait for an
+acknowledgement from the receiver. The reciever will then manage flow control.
+
+If window advertisement is not done, the reciever continually informs the sender
+of how much data it is prepared to receive.
