@@ -1,9 +1,16 @@
 \section{}
 
-The FEC 
+The FIFO buffer in the FEC helps with handling short term burstiness of the data
+that is both recieved by the FEC and transmitted from the FEC from the CPU. If
+the CPU cannot keep up for a moment with sending bits or receiving bits fast
+enough, the buffer ensures that data is available to be processed when the CPU
+is ready without having to abandon or truncate packets. 
 
 
-The DMA 
+The DMA allows for data to be transferred more efficiently between the system's
+memory, and the FIFO buffer in the FEC. The DMA controller allows for the
+movement of blocks to take up less CPU cycles, since the direct memory access is
+done in place of a bunch of CPU move instructions.
 
 If the system designer is expecting more bits to be sent than recieved, they may
 choose to partition the FIFO buffer such that more space is allocated for
@@ -11,7 +18,7 @@ sending bits than receiving. Similarly, if more bits are expected to be received
 than sent, then the FIFO buffer may be allocated such that the buffer for
 receiving is larger. 
 
-This decision would be implemented by loading the value
+This decision would be implemented by loading the value \todo{i dunno}
 
 
 into an FEC register.

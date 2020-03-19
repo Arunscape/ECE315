@@ -10,6 +10,7 @@
     frame check sequences
   \item resolves addressing of destination stations
   \item controls access to the PHY
+  \item translates data packets to digital bits for the PHY
 \end{enumerate}
 
 Compared to the PHY, the MAC layer operates at one layer above the PHY in the
@@ -17,4 +18,5 @@ OSI model. Additionally, the physical layer does not handle error detection and
 correction. It does not determine which device can access the medium either. The
 physical layer transmits raw bits, instead of data frames. It is an interface to
 the transmission medium, while the MAC layer is an interface to the physical
-layer.
+layer. The MAC converts data packets to digital bits, while the PHY converts
+between digital and analog signals.
