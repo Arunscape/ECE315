@@ -4,4 +4,13 @@ addressing scheme even if at least some of the underlying networks might already
 provide reliable communication or a large number of unique addresses for every
 node because the priority is compatibility between the existing networks. Not
 all networks connected to the internet are reliable. Not all of them have a very
-large number of unique addresses for every node. 
+large number of unique addresses for every node. If a connection is made between
+an unreliable network, and a reliable one, overall, the transmission is still
+unrunreliable. Providing an only unreliable allows for greater compatibility
+between the networks. It also allows for separation of concerns. If reliability
+is required, or state information about the connection is required,
+that can be provided by the higher level layers. For example, the TCP protocol
+can be used to have a reliable connection. Similarly, IP using its own
+addressing scheme allows for the upper layers to use their own addressing
+schemes which allow for more options and compatibility for connections and
+protocols. 
