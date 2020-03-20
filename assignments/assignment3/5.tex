@@ -1,3 +1,45 @@
 \section{}
 
-slew = speed\_limit / something
+The stepper motor control algorithm could be modified as follows
+
+\begin{adjustbox}{width=2\textwidth,center}
+	\digraph{motor}{
+	// rankdir=LR;
+	size="8,5";
+	overlap=false;
+	// node [shape = doublecircle];
+	node [shape = circle];
+	begin [label= "", shape=none,height=.0,width=.0];
+	begin -> Stationary [label = "reset"];
+  Stationary -> Stationary [label="destination_position == current_position"];
+  Stationary -> Accelerating [label="destination_position != current_position"];
+  Accelerating -> Accelerating [label = "Not near minumum stopping distance, and
+  not at slew rate"];
+  Accelerating -> Decelerating [label="Approaching min. stopping dist."];
+  Accelerating -> Slewing [label="Not near minimum stopping distance, and have
+  reached the slew rate"];
+  Slewing -> Slewing [label="Not near minimum stopping distance"];
+  Slewing -> Decelerating [label = "Approaching min. stopping dist."];
+  Decelerating -> Decelerating [label="Not yet at destination position"];
+  Decelerating -> Stationary [label="destination_position == current_position"];
+  Accelerating -> Decelerating [label="Above new slew rate" color=green];
+  Slewing -> Accelerating [label="Below new slew rate" color=green];
+  Slewing -> Decelerating [label="Above new slew rate" color=green];
+  Decelerating -> Slewing [label="Reached the new slew rate" color=green];
+
+	}
+\end{adjustbox}
+
+Basically, in the four code snippets, a new global variable would be added next
+to the other three (
+\texttt{present\_state},
+\texttt{present\_position},
+\texttt{step\_period}
+) called \texttt{slew\_rate}.
+
+In the acceleration and slewing code, there would be a check to see if the
+slewing rate changed. If the current slewing rate is faster than what the new
+slewing rate is supposed to be, then the state should switch to the decelerating
+state. Similarly, in the decelerating and slewing code, if the new slewig rate
+is faster than the current slewing rate, it should transition to the
+accelerating state. 
