@@ -18,7 +18,8 @@ sending bits than receiving. Similarly, if more bits are expected to be received
 than sent, then the FIFO buffer may be allocated such that the buffer for
 receiving is larger. 
 
-This decision would be implemented by loading the value \todo{i dunno}
+This decision would be implemented modifying the value in the FEC register. The
+buffer descripters in the transmit and receive direction would be modified as
+needed to implement the design decision made by the system designer. 
 
 
-into an FEC register.
