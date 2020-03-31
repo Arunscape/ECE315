@@ -1,0 +1,23 @@
+\section{}
+
+DHCP and BOOTP cannot use TCP, because TCP requires both nodes to have unique
+IP addresses. When a DHCP client for example first starts up, it does not know
+which host or hosts it wants to connect to, so it sends a discover broadcast
+message to all hosts on the network. This broadcasting activity is not supported
+by TCP, because this activity has a one-to-many relationship as opposed to a
+one-to-one relationship. The purpose of DHCP and BOOTP is to obtain an IP
+address. That is, when the process is done, the computer will then have an IP
+address, meaning the computer does not have an IP address in the middle of the
+DHCP or BOOTP process. 
+
+Both work in a similar fashion, since DHCP is an extension of BOOTP.
+
+  First, there is a broadcast message, in which a client asks for an IP address.
+
+  Then, the  broadcast message is picked up, and the BOOTP/DHCP server responds
+    with information that the client needs such as the client’s IP address,
+    subnet mask, default gateway address,  the IP address and host name of the
+    BOOTP/DHCP server. This is also broadcasted, since the client does not have 
+    an IP address next. 
+
+    The client then picks up this information, and processes it. 
