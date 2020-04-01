@@ -1,1 +1,28 @@
 \section{}
+FIFO buffers are used at the sending and receiving ends to make sure that 
+the buffers can hold data if there are short-term mismatches in the rate that
+the data is transferred. The order in which the data is sent/received is
+preserved, and the data does not have to be re-transmitted. 
+
+In contrast, flow control is used to avoid long-term mismatches in the data
+rates. The receiver gives feedback to the sender which lets the sender know
+whether it should slow down or speed up the rate at which it is sending data. 
+It can also tell the sender to stop sending data if it is overwhelmed, and
+resume sending data. 
+
+FIFO buffers and flow control are used together decouple the data rates between
+two communicating computers. 
+
+Without data buffers, and only using flow control, the system would be less
+tolerant of short-term mismatches. More re-transmissions of data would be
+required, since small fluctuations in the sending and receiving rate of data
+means that the sender may not send the data at the correct rate, and the receiver
+may not be ready to receive data at the correct rate 
+which would result in some incoming data being lost.
+
+Without flow control, if the data rate is too fast, the receiver's buffer could
+get filled and we'd have a similar issue, where the receiver is not ready to
+receive data, and the lost data has to be re-transmitted. Alternatively, if
+the data rate is too slow, the sender's buffer could fill up, and the receiver's
+buffer would be mostly empty, being underutilized since a higher data rate would
+be more ideal. 
