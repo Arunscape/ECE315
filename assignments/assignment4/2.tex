@@ -1,2 +1,70 @@
 \section{}
 
+\subsection*{Similarities}
+\begin{itemize}
+  \item From the user perspective there is not a huge difference between the two
+    strategies of displaying dynamic webpages
+  \item both methods run scripts on computers to display dynamic content
+\end{itemize}
+
+\subsection*{Differences}
+\begin{itemize}
+  \item where the code is run. As the name suggests, client-side scripts run on
+    the user's computer, instead of the server. Server-side scripts run on a
+    remote server, instead of the user's computer. 
+\end{itemize}
+
+\subsection*{Server-side scripting}
+\subsubsection*{Advantages}
+\begin{enumerate}
+  \item the user does not have to install plugins (for example, Flash)
+  \item scripts are hidden from the point of view of the user. They only see the
+    HTML that is outputted. This can help with protecting intellectual property,
+    especially if the code is not obfuscated
+  \item In general, load times are quicker since the website and its content is
+    already generated/pre-computed so the client does not have to do any
+    additional processing.
+  \item More control over what code is executed. The client does not have the
+    ability to modify the scripts that are run.
+\end{enumerate}
+\subsubsection*{Disadvantages}
+\begin{enumerate}
+  \item more investment is needed in server compute resources, since scripts are
+    processed on the server side
+  \item does not scale well with many users. As your website gets more traffic,
+    you need to spend more resources on server hardware compared to client side
+    scripting
+\end{enumerate}
+
+\subsection*{Client-side scripting}
+\subsubsection*{Advantages}
+\begin{enumerate}
+  \item more interactivity, since user actions can be processed immediately
+    without requiring a trip to the server and back
+  \item less network usage, since user actions are processed locally, meaning
+    the server has to send and receive less data
+  \item less server compute resources required compared to server side, since
+    the processing is done client-side. As the website gains more users, not as
+    much processing resources need to be added (although bandwidth would still
+    be an issue)
+\end{enumerate}
+\subsubsection*{Disadvantages}
+\begin{enumerate}
+  \item Depending on the scripting language chosen, the user's browser may not
+    support it, meaning they would not be able to interact with the website
+  \item Different browsers may have different implementations of the scripting
+    language, which adds some overhead for the developers, since more cases need
+    to be considered and as a result, more testing to support users with
+    different browsers
+  \item Load times may be slower since the client must run the script to
+    generate the site and its contents
+  \item Less control over what gets executed. A malicious client might be able
+    to modify the code and run it in an unexpected way
+  \item the client's computer may be too slow to run the scripts in a reasonable
+    time, leading to a poor user experience
+  \item a client who has not refreshed the website in a long time may be running
+    an older script which was previously updated
+  \item proprietary code can potentially be exposed to users if it is not
+    obfuscated
+\end{enumerate}
+
