@@ -1,1 +1,15 @@
 \section{}
+\begin{enumerate}
+  \item lwIP is written in C, which is a highly portable language with broad
+    compiler support for multiple platform targets
+  \item lwIP is designed such that the software is partitioned between a generic
+    TCP/IP stack core which is buffered with 3 adaptation layers
+  \item the first adaptation layer deals with the hardware, it is a bunch of
+    drivers which abstracts the hardware to make it appear the same since the
+    same access functions are made available
+  \item the second adaptation layer deals with varying operating systems. It
+    makes very few assumptions about the operating system to allow for
+    compatibility with a wide range of operating systems
+  \item the third adaptation layer serves as an API which provides function
+    calls that implement sockets for higher level applications
+\end{enumerate}
