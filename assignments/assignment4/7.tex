@@ -1,1 +1,18 @@
 \section{}
+When the data arrives out of order from the perspective of the receiver, it is
+stored, and presented to the process in the correct order. 
+
+Out-of-order packets are detected by the receiving networking hardware by
+checking the sequence portion of the TCP header. This is a 32-bit field which
+comes after first 32 bits. (That is, bits 32-63) in the header.
+The purpose of the sequence field is store a number which allows the
+bytes which are sent to be ordered. The starting number is agreed upon
+when setting up the connection, and subsequent segments have an increasing
+segment number in their respective header fields. 
+
+If a later
+segment arrives before the one which is expected, the receiver can hold on to it
+while it waits for the next segment which it is expecting to arrive. Then, when
+the correct segment arrives, the receiver can send an acknowledgements for the
+segments received. (The acknowledgements are sent in the same order as the
+sequence numbers)
