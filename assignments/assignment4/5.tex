@@ -1,1 +1,28 @@
 \section{}
+
+When establishing the connection, the client sends its sequence number (
+a value between 0 and the 32-bit maximum unsigned integer). When the server
+receives the client's request, it replies with its own sequence number, and an
+acknowledgement indicating the next segment number it is expecting from the
+client. The client receives the response from the server, and sends a
+(pure) acknowledgement indicating the next segment number it is expecting from
+the server. At this point, the TCP connection is established, and the server is 
+ready to listen for a request from the client.
+The client is then free to send a request with its current sequence number to
+the server, and when the server receives the segment, it responds with an
+acknowledgement indicating the next segment it is expecting to receive. This
+process is repeated until the connection is closed. 
+
+For example, let's say that a client wanted to connect to a server.
+
+\begin{enumerate}
+  \item Client sends SYN with its sequence number. Let's say this number is 100
+  \item The server then sends a SYN with its own sequence number. Let's say this
+    number is 200
+  \item The server also sends an acknowledgement to the client, saying it's
+    expecting the next segment to be 101
+  \item The client receives the server's SYN, and responds with a pure
+    acknowledgement saying it expects the next segment number to be 201.
+  \item the client sends a segment with segment number 101, and increments its
+    own sequence number
+\end{enumerate}

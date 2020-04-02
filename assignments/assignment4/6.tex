@@ -9,7 +9,9 @@ reader is now reading from the second buffer, and the writer is writing to the
 first buffer. This process repeats itself.
 An illustration from the notes is below:
 
-  \includepdf[pages={17}, width=\textwidth]{../../notes/Ch11_W20_Flow_Control.pdf}
+\begin{figure}[h]
+  \includegraphics[page=17, width=\textwidth]{../../notes/Ch11_W20_Flow_Control.pdf}
+\end{figure}
 
   The advantage of a ping-pong buffer is that the reader and the writer can
   access data stored in their respective buffers in any arbitrary order,
