@@ -12,7 +12,15 @@ segment number in their respective header fields.
 
 If a later
 segment arrives before the one which is expected, the receiver can hold on to it
-while it waits for the next segment which it is expecting to arrive. Then, when
-the correct segment arrives, the receiver can send an acknowledgements for the
-segments received. (The acknowledgements are sent in the same order as the
-sequence numbers)
+while it waits for the next segment which it is expecting to arrive. 
+Say, for example the receiver was waiting for a segment, and the segment number
+for argument's sake is 901. Due to different routes taken by the datagrams,
+segment 903 arrives first instead. The receiver would send an acknowledgement
+saying it is expecting segment 901. This lets the sender know that a datagram
+was received, but it was not the right one. (If 3 duplicate acknowledgements
+arrive, it is assumed the datagram was lost and needs to be re-transmitted).
+Then, say segment 902 arrives. This is again out of order, and the receiver
+would send another acknowledgement asking for segment 901. Finally, when segment
+901 arrives, the receiver has segments 901, 902, and 903, so it sends an
+acknowledgement asking for segment 904, which lets the sender know that the
+previous segments have been received.
