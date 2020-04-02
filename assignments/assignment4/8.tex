@@ -1,1 +1,11 @@
 \section{}
+
+A circular buffer can be created using the modulo feature of the eDMA, in which
+the size of the queue is a power of 2. It is limited to a size of 0 bytes
+(where the buffer is disabled) to maximum of 256 Kbytes. The SMOD and the DMOD 
+field descriptors are used to specify the source and destination buffer sizes,
+respectively. These are available in bits 15-12 and 11-8 in the DCRn field
+descriptors. (where n is 0, 1, 2, or 3). The buffer base address will be located
+on a boundary of the buffer size, and the value of the boundary is based on the
+initial source/destination address. (Source for SMOD, destination for DMOD These
+are in the SAR and DAR registers, respectively).
